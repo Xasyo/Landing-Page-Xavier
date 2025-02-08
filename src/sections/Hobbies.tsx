@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
 import SportsImage from "@/assets/Deporte.png";
@@ -9,20 +6,12 @@ import VideogamesImage from "@/assets/Videojuegos.png";
 import MotorsportsImage from "@/assets/Motor.png";
 
 export const Hobbies = () => {
-    const { scrollYProgress } = useScroll();
 
     const hobbies = [
         { hobbie: "Gastronomía", image: GastronomyImage },
         { hobbie: "Deporte", image: SportsImage },
         { hobbie: "Videojuegos", image: VideogamesImage },
         { hobbie: "Motor", image: MotorsportsImage },
-    ];
-
-    const xOffsets = [
-        useTransform(scrollYProgress, [0, 1], [-500, 0]),
-        useTransform(scrollYProgress, [0, 1], [500, 0]),
-        useTransform(scrollYProgress, [0, 1], [-500, 0]),
-        useTransform(scrollYProgress, [0, 1], [500, 0]),
     ];
 
     return (
@@ -32,9 +21,8 @@ export const Hobbies = () => {
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10 md:gap-y-10 lg:gap-y-36">
                 {hobbies.map(({ hobbie, image }, index) => (
-                    <motion.div
+                    <div
                         key={index}
-                        style={{ x: xOffsets[index] }}
                         className="flex"
                     >
                         <div className="bg-white shadow-2xl rounded-2xl hover:scale-105 duration-300 h-32 flex gap-5 justify-center px-10 flex-1">
@@ -45,7 +33,7 @@ export const Hobbies = () => {
                                 <Image src={image} alt={hobbie} className="self-end" />
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </section>
