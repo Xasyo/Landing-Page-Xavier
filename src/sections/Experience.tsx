@@ -10,7 +10,7 @@ export const Experience = () => {
     const experiences = [
         {
             company: "i2Cat",
-            position: "3D Software Engineer",
+            position: "3D Software Engineer Intern",
             period: "Febrero 2024 - Enero 2025",
             description: "Desarrollo de un sistema de captura de vídeo volumétrico con integración de cámaras RGB+D y lightfield",
             link: "https://i2cat.net/",
