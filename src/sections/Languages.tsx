@@ -23,9 +23,12 @@ export const Languages = () => {
         { language: "Francés", level: "B2", flag: FranceFlag, certificate: "/documents/B2_Frances.pdf" },
     ];
 
-    const xOffsets = languages.map((_, index) =>
-        useTransform(scrollYProgress, [0, 1], index < 2 ? [-200, 0] : [200, 0])
-    );
+    const xOffsets = [
+        useTransform(scrollYProgress, [0, 1], [-200, 0]),
+        useTransform(scrollYProgress, [0, 1], [-200, 0]),
+        useTransform(scrollYProgress, [0, 1], [200, 0]),
+        useTransform(scrollYProgress, [0, 1], [200, 0]),
+    ];
 
     return (
         <section id="languages" className="container mt-10 lg:mt-20">

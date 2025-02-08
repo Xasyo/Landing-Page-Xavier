@@ -18,9 +18,12 @@ export const Hobbies = () => {
         { hobbie: "Motor", image: MotorsportsImage },
     ];
 
-    const xOffsets = hobbies.map((_, index) =>
-        useTransform(scrollYProgress, [0, 1], index % 2 === 0 ? [-500, 0] : [500, 0])
-    );
+    const xOffsets = [
+        useTransform(scrollYProgress, [0, 1], [-500, 0]),
+        useTransform(scrollYProgress, [0, 1], [500, 0]),
+        useTransform(scrollYProgress, [0, 1], [-500, 0]),
+        useTransform(scrollYProgress, [0, 1], [500, 0]),
+    ];
 
     return (
         <section id="hobbies" className="container mt-10 lg:mt-20">
