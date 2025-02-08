@@ -55,22 +55,22 @@ export const Contact = () => {
                     }, index) => (
                         <div key={index}>
                             {link ? (
-                                <a href={link} className="flex flex-1 items-center gap-2 bg-white hover:scale-105 duration-300 rounded-2xl p-4 shadow-2xl">
+                                <a href={link} className="flex flex-1 items-center gap-5 md:gap-2 bg-white hover:scale-105 duration-300 rounded-2xl p-4 shadow-2xl">
                                     <Image 
                                         src={image} 
                                         alt={contact} 
                                         className="h-8 w-auto"
                                     />
-                                    <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{contact}</h2>
+                                    <h2 className="text-xl md:text-2xl font-bold text-[#3c3c3cea] text-center">{contact}</h2>
                                 </a>
                             ) : ( 
-                                <div className="flex flex-1 items-center gap-2 bg-white hover:scale-105 duration-300 rounded-2xl p-4 shadow-2xl">
+                                <div className="flex flex-1 items-center gap-5 md:gap-2 bg-white hover:scale-105 duration-300 rounded-2xl p-4 shadow-2xl">
                                     <Image 
                                         src={image} 
                                         alt={contact} 
                                         className="h-8 w-auto"
                                     />
-                                    <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{contact}</h2>
+                                    <h2 className="text-xl md:text-2xl font-bold text-[#3c3c3cea] text-center">{contact}</h2>
                                 </div>
                             )}
                         </div>

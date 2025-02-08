@@ -1,4 +1,4 @@
-export const Header = () => {
+ export const Header = () => {
     return (
         <header className="sticky top-0 backdrop-blur-sm">
             <div className="py-5">
