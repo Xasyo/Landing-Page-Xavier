@@ -42,17 +42,21 @@ export const Education = () => {
             </h1>
             <div ref={ref} className="flex flex-col gap-y-10">
                 {educations.map(({ center, title, period, grade, image, image2, link }, index) => {
-                    const xOffset = useTransform(
-                        scrollYProgress,
-                        [0, 1],
-                        index % 2 === 0 ? [-300, 0] : [300, 0]
-                    );
+                    const { scrollYProgress } = useScroll({
+                        target: ref,
+                        offset: ["0.2 1", "1.2 1"],
+                    });
+                
+                    const xOffsets = [
+                        useTransform(scrollYProgress, [0, 1], [-300, 0]),
+                        useTransform(scrollYProgress, [0, 1], [300, 0]),
+                    ];
 
                     return (
                         <motion.a
                             href={link}
                             key={index}
-                            style={{ x: xOffset}}
+                            style={{ x: xOffsets[index % 2] }}
                             className="block"
                         >
                             <div className="md:flex gap-10 bg-white hover:scale-105 duration-300 rounded-2xl p-6 shadow-2xl">

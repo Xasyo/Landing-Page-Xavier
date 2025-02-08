@@ -23,49 +23,45 @@ export const Languages = () => {
         { language: "Francés", level: "B2", flag: FranceFlag, certificate: "/documents/B2_Frances.pdf" },
     ];
 
+    const xOffsets = languages.map((_, index) =>
+        useTransform(scrollYProgress, [0, 1], index < 2 ? [-200, 0] : [200, 0])
+    );
+
     return (
         <section id="languages" className="container mt-10 lg:mt-20">
             <h1 className="text-5xl lg:text-7xl mb-10 font-bold tracking-tighter bg-gradient-to-b from-[#797979ea] to-[#3c3c3cea] text-transparent bg-clip-text text-center">
                 Idiomas
             </h1>
             <div ref={ref} className="flex flex-col md:flex-row gap-10 md:gap-5">
-                {languages.map(({ language, level, flag, certificate }, index) => {
-                    const xOffset = useTransform(
-                        scrollYProgress,
-                        [0, 1],
-                        index < 2 ? [-200, 0] : [200, 0]
-                    );
-
-                    return (
-                        <motion.div
-                            key={index}
-                            style={{ x: xOffset}}
-                            className="flex-1 bg-white hover:scale-105 duration-300 rounded-2xl p-6 shadow-2xl"
-                        >
-                            {certificate ? (
-                                <a href={certificate}>
-                                    <div className="flex gap-5 justify-center items-center">
-                                        <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{language}</h2>
-                                        <Image src={flag} alt={language} className="rounded-lg object-contain" width={30} height={20} />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{level}</h2>
-                                    </div>
-                                </a>
-                            ) : (
-                                <div>
-                                    <div className="flex gap-5 justify-center items-center">
-                                        <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{language}</h2>
-                                        <Image src={flag} alt={language} className="rounded-lg object-contain" width={30} height={20} />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{level}</h2>
-                                    </div>
+                {languages.map(({ language, level, flag, certificate }, index) => (
+                    <motion.div
+                        key={index}
+                        style={{ x: xOffsets[index] }}
+                        className="flex-1 bg-white hover:scale-105 duration-300 rounded-2xl p-6 shadow-2xl"
+                    >
+                        {certificate ? (
+                            <a href={certificate}>
+                                <div className="flex gap-5 justify-center items-center">
+                                    <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{language}</h2>
+                                    <Image src={flag} alt={language} className="rounded-lg object-contain" width={30} height={20} />
                                 </div>
-                            )}
-                        </motion.div>
-                    );
-                })}
+                                <div className="mt-4">
+                                    <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{level}</h2>
+                                </div>
+                            </a>
+                        ) : (
+                            <div>
+                                <div className="flex gap-5 justify-center items-center">
+                                    <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{language}</h2>
+                                    <Image src={flag} alt={language} className="rounded-lg object-contain" width={30} height={20} />
+                                </div>
+                                <div className="mt-4">
+                                    <h2 className="text-2xl font-bold text-[#3c3c3cea] text-center">{level}</h2>
+                                </div>
+                            </div>
+                        )}
+                    </motion.div>
+                ))}
             </div>
         </section>
     );
